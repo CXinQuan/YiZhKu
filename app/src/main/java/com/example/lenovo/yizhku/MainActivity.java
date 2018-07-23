@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -38,7 +40,7 @@ import page.OrderPager;
 import utils.SharePreferenceUtils;
 import view.NoScrollViewPager;
 
-public class MainActivity extends BaseActivity implements MyObserver {
+public class MainActivity extends FragmentActivity implements MyObserver {
     private Context mCtx = this;
     MyObserverManager myObserverManager;
     @BindView(R.id.bottom_navigation)
@@ -50,10 +52,10 @@ public class MainActivity extends BaseActivity implements MyObserver {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
-
-
 
         bottom_navigation.setItemIconTintList(null);
         ColorStateList textColor = (ColorStateList) getResources().getColorStateList(R.color.btn_s);

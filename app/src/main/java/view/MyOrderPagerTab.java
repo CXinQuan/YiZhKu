@@ -1,6 +1,5 @@
 package view;
 
-import android.view.ViewGroup;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -33,11 +32,11 @@ import utils.UIUtils;
  * Created by lenovo on 2018/7/13.
  */
 
-public class MyPagerTab extends ViewGroup {
+public class MyOrderPagerTab extends ViewGroup {
     private ViewPager mViewPager;
     private PageListener mPageListener = new PageListener();//用于注册给ViewPager监听状态和滚动
     private OnPageChangeListener mDelegatePageListener;//用于通知外界ViewPager的状态和滚动
-    private DormitoryActivity mActivity;
+    private MainActivity mActivity;
 
 
     private int mDividerPadding = 12;// 分割线上下的padding
@@ -80,18 +79,18 @@ public class MyPagerTab extends ViewGroup {
     private EdgeEffectCompat mLeftEdge;//处理overScroll的反馈效果
     private EdgeEffectCompat mRightEdge;
 
-    public MyPagerTab(Context context) {
+    public MyOrderPagerTab(Context context) {
         this(context, null);
     }
 
-    public MyPagerTab(Context context, AttributeSet attrs) {
+    public MyOrderPagerTab(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MyPagerTab(Context context, AttributeSet attrs, int defStyle) {
+    public MyOrderPagerTab(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        if (context instanceof DormitoryActivity) {
-            mActivity = (DormitoryActivity) context;
+        if (context instanceof MainActivity) {
+            mActivity = (MainActivity) context;
         }
         init();
         initPaint();
