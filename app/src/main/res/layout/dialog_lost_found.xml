@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/ll"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@mipmap/lostfound" />-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:text="失物招领"-->
+            <!--android:textSize="18sp" />-->
+    <!--</LinearLayout>-->
+
+    <EditText
+        android:id="@+id/et_thing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rg"
+        android:layout_margin="10dp"
+        android:textColorHint="#55666666"
+        android:hint="请输入捡到/遗失物品" />
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbtn_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:text="捡到"
+            android:checked="true"
+            android:textColor="#3f98f4"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rbtn_lost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="遗失"
+            android:textColor="#3f98f4"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_thing"
+        android:background="@drawable/inputtext"
+        android:maxLines="20"
+        android:minLines="6"
+        android:scrollbars="vertical"
+        android:textColorHint="#55666666"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:enabled="true"
+        android:gravity="top"
+        android:hint="请输入该物品的描述"
+        />
+    <LinearLayout
+        android:id="@+id/ll_yanzhenhgma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/inputtext"
+        android:layout_below="@+id/et_content"
+        android:weightSum="2">
+        <EditText
+            android:id="@+id/et_yanzhengma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="验证码"
+            android:textColorHint="#55666666"
+            android:background="@drawable/inputtext" />
+        <TextView
+            android:id="@+id/tv_yanzhengma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:text="验证码"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_yanzhenhgma"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_cancle_selector"
+            android:shadowRadius="5"
+            android:text="取消" />
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_cancle_selector"
+            android:text="提交" />
+    </LinearLayout>
+</RelativeLayout>

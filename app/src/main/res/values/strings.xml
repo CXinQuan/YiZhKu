@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">易仲恺</string>
+    <string name="yjfk_head">在线QQ客服：161205417"\n"
+    电话：13533169284（工作时间9:00-21:00）
+    </string>
+    <string name="yjfk_bellow">您在使用过程中有什么问题，都可以反馈给我们，
+        我们会尽快为您处理，另外，如果您对易仲恺有任何意见和建议都可以在这里进行留言哦！</string>
+    <string name="yjfk_hint">请将您的宝贵意见写在这里~</string>
+
+
+</resources>

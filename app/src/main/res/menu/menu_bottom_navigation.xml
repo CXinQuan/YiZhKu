@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/home_selector"
+        android:title="主页"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/order"
+        android:enabled="true"
+        android:icon="@drawable/order_selector"
+        android:title="业务"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/my"
+        android:enabled="true"
+        android:icon="@drawable/my_selector"
+        android:title="我"
+        app:showAsAction="ifRoom" />
+</menu>

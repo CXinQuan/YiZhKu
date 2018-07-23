@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:src="@mipmap/repair_title_person" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设备维修"
+                android:textSize="20sp"
+                android:layout_toRightOf="@+id/iv_back"
+                android:layout_centerVertical="true"
+                android:textColor="#3f67f4"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/repair"
+                android:text="维修类型："
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinner_repair_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:popupBackground="#ffffff"
+                android:dropDownWidth="110dp">
+                <!-- dropDownWidth 指定了 下拉框的宽度 -->
+
+            </Spinner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableLeft="@mipmap/dormitory3"
+                android:text="宿舍地址："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_dormitory_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:hint="如：6601"
+                android:textColorHint="#55666666"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableLeft="@mipmap/phone2"
+                android:text="联系人："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_person"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:hint="如：余鑫耸"
+                android:textColorHint="#55666666"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableLeft="@mipmap/person"
+                android:text="联系电话："
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:hint="如：13533123456"
+                android:textColorHint="#55666666"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@mipmap/clock"
+                android:text="可维修时段："
+                android:textSize="16sp" />
+
+            <NumberPicker
+                android:id="@+id/np_hour"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+              >
+             <!--   android:divider="#3f67f4"
+                android:dividerPadding="20dp"
+                没用 设置
+                -->
+            </NumberPicker>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text=":" />
+
+            <NumberPicker
+                android:id="@+id/np_minute"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"></NumberPicker>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_describe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/inputtext"
+            android:enabled="true"
+            android:gravity="top"
+            android:hint="描述如：风扇烧坏"
+            android:maxLines="15"
+            android:minLines="6"
+            android:scrollbars="vertical"
+            android:textColorHint="#55666666" />
+
+        <ImageView
+            android:id="@+id/iv_repair_photo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/upload_photo" />
+
+        <Button
+            android:id="@+id/btn_submit_repair"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/dialog_bg"
+            android:text="提交"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+</ScrollView>

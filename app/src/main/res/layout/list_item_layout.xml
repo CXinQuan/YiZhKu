@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:id="@+id/tv_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:singleLine="true"
+    android:textSize="16sp"
+    android:text="人文与社会科学学院召开2016级社工专业农村社会工作专项实习总结大会"
+    />
+<TextView
+    android:id="@+id/tv_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="2018-07-10 17:18:22"
+    android:layout_below="@+id/tv_title"
+    android:layout_alignParentRight="true"
+    android:layout_marginTop="3dp"
+    />
+</RelativeLayout>

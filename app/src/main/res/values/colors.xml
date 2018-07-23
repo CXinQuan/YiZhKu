@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="btn_n">#ffffff</color>
+    <color name="btn_s">#2a672d</color>
+    <color name="bg_tab_pressed">#6633b5e5</color><!-- 蓝色 -->
+    <color name="bg_tab_normal">#00000000</color>
+    <!-- <color name="bg_tab_pressed2">#ff3898ff</color>  -->
+    <color name="btn_cancle_selected">#3f84ff</color> <!-- 选中文字颜色 -->
+    <color name="btn_cancle_normal">#660084ff</color> <!-- 选中文字颜色 -->
+    <color name="tab_text_color_selected">#ff0084ff</color> <!-- 选中文字颜色 -->
+
+    <color name="tab_text_color_normal">#ff737373</color> <!-- 未选中文字颜色 -->
+    <color name="btn_clear_color_normal">#003090E6</color>
+    <color name="btn_clear_color_press">#443090E6</color>
+
+    <!--用户名颜色-->
+    <color name="user_name_color">#f7b45c</color>
+
+
+</resources>
