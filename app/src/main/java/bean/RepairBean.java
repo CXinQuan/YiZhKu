@@ -17,6 +17,15 @@ public class RepairBean extends BmobObject {
     String service_time;//预约上门维修时间
     int state;       //状态    已提交     已受理     已维修
     BmobFile photo;      //图片描述
+    String photoUrl;
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
 
     public String getRepairType() {
         return repairType;

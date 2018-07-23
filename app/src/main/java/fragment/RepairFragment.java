@@ -44,6 +44,7 @@ import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
+import database.manager.RepairManager;
 import global.Constants;
 import utils.ToastUtil;
 import utils.UIUtils;
@@ -79,8 +80,12 @@ public class RepairFragment extends BaseFragment implements NumberPicker.OnValue
 
     String hour_select;
     String minute_select;
+    RepairManager manager;
+
 
     private void initViews(View view) {
+        manager = RepairManager.getInstance(getActivity());
+
         ivBack = (ImageView) view.findViewById(R.id.iv_back);
         spinnerRepairType = (Spinner) view.findViewById(R.id.spinner_repair_type);
 
@@ -153,7 +158,8 @@ public class RepairFragment extends BaseFragment implements NumberPicker.OnValue
                                     }
                                 }).show();
                     } else {
-                        ActivityCompat.requestPermissions(getActivity(), PERMISSIONS_STORAGE, Integer.parseInt(permission.WRITE_EXTERNAL_STORAGE));
+                       // ActivityCompat.requestPermissions(getActivity(), PERMISSIONS_STORAGE, Integer.parseInt(permission.WRITE_EXTERNAL_STORAGE));
+                   ToastUtil.showToast(getActivity(),"应用需要存储权限来让您选择手机中的相片！");
                     }
                 } else {
                     Intent intent = new Intent();
@@ -200,7 +206,7 @@ public class RepairFragment extends BaseFragment implements NumberPicker.OnValue
                             Toast.makeText(getActivity(), "提交成功，受理编号为：" + repair.getObjectId(), Toast.LENGTH_SHORT).show();
                             getActivity().finish();
                             //#############################  存入数据库
-
+                            manager.saveRepairInfo(repair);
 
                         } else {
                             Log.d("bmob", "repairBean 保存失败：" + e.getMessage() + "," + e.getErrorCode());
