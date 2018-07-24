@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2c96ff"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_goback"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/go_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:text="订单详情"
+            android:textColor="#ffffff"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:orientation="horizontal">
+        <View
+            style="@style/order_bottom_unit_View"
+            />
+        <View
+            style="@style/order_bottom_unit_View" />
+        <View
+            style="@style/order_bottom_unit_View"/>
+        <View
+            style="@style/order_bottom_unit_View"/>
+        <View
+            style="@style/order_bottom_unit_View" />
+        <View
+            style="@style/order_bottom_unit_View" />
+        <View
+            style="@style/order_bottom_unit_View"/>
+        <View
+            style="@style/order_bottom_unit_View" />
+        <View
+            style="@style/order_bottom_unit_View" />
+        <View
+            style="@style/order_bottom_unit_View" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+                <ImageView
+                    android:id="@+id/iv_user_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/order_user_info"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical"
+                    android:text="联系人信息"
+                    android:layout_toRightOf="@+id/iv_user_info"
+                    android:textColor="#3090E6"
+                    android:textSize="20sp" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_changed_address"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_marginRight="10dp"-->
+                    <!--android:src="@mipmap/right" />-->
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/ll_user_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_order_user_name"
+                        style="@style/OrderInfoTheme_TextView"
+                        android:text="联系人：阿耸" />
+                    <TextView
+                        android:id="@+id/tv_order_user_phone"
+                        style="@style/OrderInfoTheme_TextView"
+                        android:text="联系电话：13533169284" />
+                    <TextView
+                        android:id="@+id/tv_order_address"
+                        style="@style/OrderInfoTheme_TextView"
+                        android:text="送水地址：仲恺农业工程学院 6栋 601" />
+
+                </LinearLayout>
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_add_user_address"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_margin="10dp"-->
+                    <!--android:textSize="30sp"-->
+                    <!--android:text="请添加收货人信息"-->
+                    <!--android:visibility="gone" />-->
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/order_info" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical"
+                    android:text="订单信息"
+                    android:textColor="#3090E6"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_order_time"
+                style="@style/OrderInfoTheme_TextView"
+                android:text="下单时间：2018-7-17 0:04" />
+
+            <ListView
+                android:id="@+id/lv_order_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </ListView>
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#3e4344">
+        <TextView
+            android:id="@+id/tv_total_money"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="￥ 15.9"
+            android:textColor="#ffffff"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+        <!--<Button-->
+            <!--android:id="@+id/btn_sure_order"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:background="#2c96ff"-->
+            <!--android:text="确认订单"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:textSize="18sp"-->
+            <!--android:textStyle="bold" />-->
+    </LinearLayout>
+</LinearLayout>
+

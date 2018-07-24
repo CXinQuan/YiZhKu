@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="76dp"
                 android:background="@color/colorPrimary"
+                android:visibility="gone"
                 app:layout_collapseMode="pin"><!--设置固定在顶部-->
 
                 <TextView

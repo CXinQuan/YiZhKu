@@ -40,6 +40,7 @@ import database.manager.OrderManager;
 import database.manager.UserAddressManager;
 import global.Constants;
 import interface_package.MyObserverManager;
+import interface_package.MyOrderObserverManager;
 import utils.SharePreferenceUtils;
 import utils.TimeUtils;
 import utils.UIUtils;
@@ -80,6 +81,7 @@ public class OrderDetailActivity extends BaseActivity  {
     OrderManager orderManager;
 
     MyObserverManager myObserverManager;
+    MyOrderObserverManager myOrderObserverManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +89,10 @@ public class OrderDetailActivity extends BaseActivity  {
         ButterKnife.bind(this);
 
         orderManager=OrderManager.getInstance(mCtx);
+
         myObserverManager=MyObserverManager.getInstance();
+
+        myOrderObserverManager=MyOrderObserverManager.getInstance();
 
         order = (Order) getIntent().getSerializableExtra(Constants.ORDER_INFO);
         Log.d("订单详情对象" + order, "订单详情对象" + order);
@@ -220,7 +225,7 @@ public class OrderDetailActivity extends BaseActivity  {
         query.setLimit(1);
         //执行查询方法
         query.findObjects(new FindListener<User>() {
-            public void done(List<User> object, BmobException e) {
+            public void done(final List<User> object, BmobException e) {
                 if (e == null) {
                     final float money = object.get(0).getMoney() - totalMoney;
                     if (money < 0) {
@@ -262,15 +267,23 @@ public class OrderDetailActivity extends BaseActivity  {
                                         if (e == null) {
                                             //   return_objectId = objectId;
                                             order.setObjectId(objectId);
+                                            for(OrderGood orderGood:order.getList_order_good()){
+                                                orderGood.setFather_id(objectId);
+                                            }
                                             // 保存到数据库
                                             orderManager.saveOrder(order);
+
+
                                             Toast.makeText(mCtx, "下单成功，订单号为：" + objectId, Toast.LENGTH_LONG).show();
 
-         //    ########################进行  订单历史的更新  界面的更新
+                  //    ########################进行  订单历史的更新 利用观察者模式  更新界面
+
+                                            myOrderObserverManager.notifyAllWaterObserver(order);
+
 
                                           // #########################更新界面上的余额
                                             //利用观察者模式  更新界面
-                                            myObserverManager.notifyAllObserver(money);
+                                                 myObserverManager.notifyAllObserver(money);
 
                                             // 告诉上一个  WaterActivity  已经下单成功，让其清空数据
                                             Intent intent = new Intent();
@@ -319,8 +332,8 @@ public class OrderDetailActivity extends BaseActivity  {
 //        });
     }
 
-
     class MyAdapter extends BaseAdapter {
+
         public int getCount() {
             return list_order_good.size();
         }

@@ -465,6 +465,7 @@ public class WaterActivity extends BaseActivity {
     private void addGoods(ImageView ibMinus, TextView tvCount, int number) {
         totalNumber++;
         setTotalCount();
+        mBtnAccount.setClickable(true);
         if (totalNumber == 1) {
             mBtnAccount.setBackgroundColor(Color.parseColor("#553090E6"));
         }
@@ -611,11 +612,11 @@ public class WaterActivity extends BaseActivity {
 
                 break;
 
-            case R.id.btn_clear:
+            case R.id.btn_clear:   //这个id 是购物车
 //                clearOrderGoodListData();
 //                break;
 
-            case R.id.rl_shoping_car_show:
+       //     case R.id.rl_shoping_car_show:
 
                 showShoppingCar();
                 break;
@@ -962,6 +963,7 @@ public class WaterActivity extends BaseActivity {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case 20:
+                  //  mBtnAccount.setEnabled(true);
                     boolean isSuccess = intent.getBooleanExtra("isSuccess", false);
                     if (isSuccess) {
                         clearOrderGoodListData();

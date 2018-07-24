@@ -41,7 +41,7 @@ public class MyDataBaseHelper extends SQLiteOpenHelper {
             + "order_time text )";//下单时间
      // 创建一张订单商品表，是订单表的 关联表
     public static final String CREATE_ORDERGOODINFO = "create table OrderGoodInfo (" +
-            "objectid text primary key," +   //订单号  唯一标识
+            "objectid text," +   //订单号 不能设置为  primary key，这样的话，就会出现 只能插入 第一个orderGood
             "name text," +    //水名
             "count integer," +  //数量
             "price float," +  //  价格

@@ -32,7 +32,7 @@ import view.MyPagerTab;
  * Created by lenovo on 2018/7/12.
  */
 
-public class OrderPager extends BasePager {
+public class OrderPager extends BasePager{
     RepairManager repairManager;
     OrderManager orderManager;
     List<RepairBean> repairBeanList = new ArrayList<RepairBean>();

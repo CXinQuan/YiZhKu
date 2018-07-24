@@ -13,6 +13,15 @@ public class OrderGood extends BmobObject {
     float price;
     BmobFile bitmap;
     String capacity;
+    String father_id;
+
+    public String getFather_id() {
+        return father_id;
+    }
+
+    public void setFather_id(String father_id) {
+        this.father_id = father_id;
+    }
 
     public String getBitmapurl() {
         return bitmapurl;

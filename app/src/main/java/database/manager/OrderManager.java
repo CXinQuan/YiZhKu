@@ -64,20 +64,22 @@ public class OrderManager {
     /**
      * 保存一条   商品 信息
      *
-     * @param orderGood
+     * @param list
      */
-    public void saveOrderGood(OrderGood orderGood) {
-        if (orderGood != null) {
+    public void saveOrderGoodList(List<OrderGood> list) {
+        if (list != null) {
             db = helper.getWritableDatabase();
-            ContentValues values = new ContentValues();
-            values.put(ID, orderGood.getObjectId());
-            values.put(NAME, orderGood.getName());
-            values.put(COUNT, orderGood.getCount());
-            values.put(PRICE, orderGood.getPrice());
-            values.put(BITMAP_URL, orderGood.getBitmap().getUrl());
-            values.put(CAPACITY, orderGood.getCapacity());
-            db.insert(TABLENAME_ORDERGOOD, null, values);
-            //    db.close();
+            for (OrderGood orderGood : list) {
+                ContentValues values = new ContentValues();
+                values.put(ID, orderGood.getFather_id());
+                values.put(NAME, orderGood.getName());
+                values.put(COUNT, orderGood.getCount());
+                values.put(PRICE, orderGood.getPrice());
+                values.put(BITMAP_URL, orderGood.getBitmap().getUrl());
+                values.put(CAPACITY, orderGood.getCapacity());
+                db.insert(TABLENAME_ORDERGOOD, null, values);
+                //    db.close();
+            }
         }
     }
 
@@ -99,14 +101,10 @@ public class OrderManager {
             values.put(DORM_NUMBER, order.getDorm_number());
             values.put(ORDER_TIME, order.getTime());
             values.put(ISFINISH, order.isfinish() ? Constants.FINISH : Constants.UNFINISH);
-
             db.insert(TABLENAME_ORDER, null, values);
+            saveOrderGoodList(order.getList_order_good());
 
-            for (OrderGood orderGood : order.getList_order_good()) {
-                saveOrderGood(orderGood);
-            }
-
-            db.close();
+            //  db.close();
         }
     }
 
@@ -124,7 +122,7 @@ public class OrderManager {
         if (cursor.moveToFirst()) {
             do {
                 OrderGood orderGood = new OrderGood();
-                orderGood.setObjectId(cursor.getString(cursor.getColumnIndex(ID)));
+                orderGood.setFather_id(cursor.getString(cursor.getColumnIndex(ID)));
                 orderGood.setName(cursor.getString(cursor.getColumnIndex(NAME)));
                 orderGood.setCount(cursor.getInt(cursor.getColumnIndex(COUNT)));
                 orderGood.setPrice(cursor.getFloat(cursor.getColumnIndex(PRICE)));
@@ -161,9 +159,9 @@ public class OrderManager {
                 order.setDorm_number(cursor.getString(cursor.getColumnIndex(DORM_NUMBER)));
                 order.setTime(cursor.getString(cursor.getColumnIndex(ORDER_TIME)));
                 order.setIsfinish(cursor.getInt(cursor.getColumnIndex(ISFINISH)) == Constants.FINISH ? true : false);
-                order.setList_order_good(queryOrderGood(order.getObjectId()));
+                order.setList_order_good(queryOrderGood(cursor.getString(cursor.getColumnIndex(ID))));
+                int i= order.getList_order_good().size();
                 list.add(order);
-
             } while (cursor.moveToNext());
             if (cursor != null) {
                 cursor.close();
@@ -171,6 +169,10 @@ public class OrderManager {
             //db.close();
         }
         return list;
+    }
+
+    public static void close() {
+        db.close();
     }
 
 

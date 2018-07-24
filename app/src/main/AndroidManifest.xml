@@ -16,9 +16,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-    <!--在sdcard中创建/删除文件的权限 -->
+    <!-- 在sdcard中创建/删除文件的权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-
 
     <application
         android:name="global.YiZhKuApplication"
@@ -31,6 +30,7 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -47,7 +47,7 @@
         <activity android:name=".YJFKActivity" />
         <activity android:name=".OrderDetailActivity" />
         <activity android:name=".AddressListActivity" />
-        <activity android:name=".LargeImageViewActivity"></activity>
+        <activity android:name=".LargeImageViewActivity" />
 
         <receiver
             android:name="broadcast.NetBroadcastReceiver"
@@ -57,6 +57,7 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".OrderHistoryDetailActivity"></activity>
     </application>
 
 </manifest>
