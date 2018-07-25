@@ -18,8 +18,7 @@
     </style>
 
 
-
-<!--
+    <!--
 activityOpenEnterAnimation // 用于设置打开新的Activity并进入新的Activity展示的动画
 activityOpenExitAnimation  // 用于设置打开新的Activity并销毁之前的Activity展示的动画
 activityCloseEnterAnimation  // 用于设置关闭当前Activity进入上一个Activity展示的动画
@@ -28,27 +27,29 @@ activityCloseExitAnimation  // 用于设置关闭当前Activity时展示的动�
 -->
 
 
-
-    <style name="PersonInfoTheme_RelativeLayout" >
+    <style name="PersonInfoTheme_RelativeLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">#ffffff</item>
     </style>
-    <style name="PersonInfoTheme_ImageView" >
+
+    <style name="PersonInfoTheme_ImageView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_margin">10dp</item>
     </style>
-    <style name="PersonInfoTheme_Left" >
+
+    <style name="PersonInfoTheme_Left">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
         <item name="android:textSize">15sp</item>
     </style>
-    <style name="PersonInfoTheme_Right" >
+
+    <style name="PersonInfoTheme_Right">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentRight">true</item>
@@ -56,7 +57,7 @@ activityCloseExitAnimation  // 用于设置关闭当前Activity时展示的动�
         <item name="android:textSize">15sp</item>
     </style>
 
-    <style name="PersonInfoTheme_SS" >
+    <style name="PersonInfoTheme_SS">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerVertical">true</item>
@@ -66,7 +67,7 @@ activityCloseExitAnimation  // 用于设置关闭当前Activity时展示的动�
         <item name="android:textSize">15sp</item>
     </style>
 
-    <style name="PersonInfoTheme_RightImageView" >
+    <style name="PersonInfoTheme_RightImageView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">30dp</item>
         <item name="android:layout_alignParentRight">true</item>
@@ -74,7 +75,7 @@ activityCloseExitAnimation  // 用于设置关闭当前Activity时展示的动�
         <item name="android:src">@mipmap/right</item>
     </style>
 
-    <style name="OrderInfoTheme_TextView" >
+    <style name="OrderInfoTheme_TextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">10dp</item>
@@ -82,18 +83,27 @@ activityCloseExitAnimation  // 用于设置关闭当前Activity时展示的动�
 
     </style>
 
-    <style name="order_bottom_unit_View" >
+    <style name="order_bottom_unit_View">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">3dp</item>
         <item name="android:background">@mipmap/order_bottom_unit</item>
         <item name="android:layout_weight">1</item>
     </style>
 
-    <style name="repair_textView" >
+    <style name="repair_textView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">10dp</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

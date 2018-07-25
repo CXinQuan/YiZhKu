@@ -32,27 +32,26 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:orientation="horizontal">
-        <View
-            style="@style/order_bottom_unit_View"
-            />
-        <View
-            style="@style/order_bottom_unit_View" />
-        <View
-            style="@style/order_bottom_unit_View"/>
-        <View
-            style="@style/order_bottom_unit_View"/>
-        <View
-            style="@style/order_bottom_unit_View" />
-        <View
-            style="@style/order_bottom_unit_View" />
-        <View
-            style="@style/order_bottom_unit_View"/>
-        <View
-            style="@style/order_bottom_unit_View" />
-        <View
-            style="@style/order_bottom_unit_View" />
-        <View
-            style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
+
+        <View style="@style/order_bottom_unit_View" />
     </LinearLayout>
 
     <ScrollView
@@ -65,34 +64,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
+
                 <ImageView
                     android:id="@+id/iv_user_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/order_user_info"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/order_user_info" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:layout_toRightOf="@+id/iv_user_info"
                     android:gravity="center_vertical"
                     android:text="联系人信息"
-                    android:layout_toRightOf="@+id/iv_user_info"
                     android:textColor="#3090E6"
                     android:textSize="20sp" />
                 <!--<ImageView-->
-                    <!--android:id="@+id/iv_changed_address"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_alignParentRight="true"-->
-                    <!--android:layout_centerVertical="true"-->
-                    <!--android:layout_marginLeft="10dp"-->
-                    <!--android:layout_marginRight="10dp"-->
-                    <!--android:src="@mipmap/right" />-->
+                <!--android:id="@+id/iv_changed_address"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="10dp"-->
+                <!--android:src="@mipmap/right" />-->
             </RelativeLayout>
 
             <FrameLayout
@@ -104,14 +106,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/tv_order_user_name"
                         style="@style/OrderInfoTheme_TextView"
                         android:text="联系人：阿耸" />
+
                     <TextView
                         android:id="@+id/tv_order_user_phone"
                         style="@style/OrderInfoTheme_TextView"
                         android:text="联系电话：13533169284" />
+
                     <TextView
                         android:id="@+id/tv_order_address"
                         style="@style/OrderInfoTheme_TextView"
@@ -120,13 +125,13 @@
                 </LinearLayout>
 
                 <!--<TextView-->
-                    <!--android:id="@+id/tv_add_user_address"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="10dp"-->
-                    <!--android:textSize="30sp"-->
-                    <!--android:text="请添加收货人信息"-->
-                    <!--android:visibility="gone" />-->
+                <!--android:id="@+id/tv_add_user_address"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:textSize="30sp"-->
+                <!--android:text="请添加收货人信息"-->
+                <!--android:visibility="gone" />-->
             </FrameLayout>
 
             <LinearLayout
@@ -151,6 +156,11 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_order_state"
+                style="@style/OrderInfoTheme_TextView"
+                android:text="订单状态：未送达" />
+
+            <TextView
                 android:id="@+id/tv_order_time"
                 style="@style/OrderInfoTheme_TextView"
                 android:text="下单时间：2018-7-17 0:04" />
@@ -158,15 +168,16 @@
             <ListView
                 android:id="@+id/lv_order_detail"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </ListView>
+                android:layout_height="match_parent"></ListView>
 
         </LinearLayout>
     </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#3e4344">
+
         <TextView
             android:id="@+id/tv_total_money"
             android:layout_width="0dp"
@@ -178,14 +189,14 @@
             android:textSize="22sp"
             android:textStyle="bold" />
         <!--<Button-->
-            <!--android:id="@+id/btn_sure_order"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:background="#2c96ff"-->
-            <!--android:text="确认订单"-->
-            <!--android:textColor="#ffffff"-->
-            <!--android:textSize="18sp"-->
-            <!--android:textStyle="bold" />-->
+        <!--android:id="@+id/btn_sure_order"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="#2c96ff"-->
+        <!--android:text="确认订单"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:textSize="18sp"-->
+        <!--android:textStyle="bold" />-->
     </LinearLayout>
 </LinearLayout>
 

@@ -64,7 +64,8 @@ public class OrderHistoryDetailActivity extends BaseActivity {
     TextView tvTotalMoney;
     @BindView(R.id.scrollView)
     ScrollView scrollView;
-
+    @BindView(R.id.tv_order_state)
+    TextView tv_order_state;
 
     float totalMoney;
     List<OrderGood> list_order_good;
@@ -83,6 +84,35 @@ public class OrderHistoryDetailActivity extends BaseActivity {
         Log.d("订单详情对象" + order, "订单详情对象" + order);
 
         if (order != null && order.getList_order_good().size() > 0) {
+
+            if (order.isfinish()) {
+                tv_order_state.setText("订单状态：已送达");
+            } else {
+                BmobQuery<Order> query = new BmobQuery<Order>();
+                query.setLimit(1);
+                query.addWhereEqualTo("objectId", order.getObjectId());
+                query.findObjects(new FindListener<Order>() {
+                    public void done(List<Order> object, BmobException e) {
+                        if (e == null) {
+                            if (object.get(0).isfinish()) {
+                                tv_order_state.setText("订单状态：已送达");
+                                //更新数据库的状态
+                                orderManager.upOrderState(order.getObjectId());
+
+                            } else {
+                                tv_order_state.setText("订单状态：未送达");
+                            }
+
+                        } else {
+                           //  Log.d("" + e.getMessage(), "失败");
+                        }
+                    }
+                });
+
+
+            }
+
+
             list_order_good = order.getList_order_good();
             for (OrderGood orderGood : list_order_good) {
                 totalMoney += orderGood.getCount() * orderGood.getPrice();
@@ -207,6 +237,5 @@ public class OrderHistoryDetailActivity extends BaseActivity {
             }
         });
     }
-
 
 }

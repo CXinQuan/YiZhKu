@@ -94,7 +94,7 @@ public class DormitoryActivity extends FragmentActivity implements View.OnClickL
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult( requestCode,resultCode,data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
@@ -112,7 +112,7 @@ public class DormitoryActivity extends FragmentActivity implements View.OnClickL
 
                     Uri uri = data.getData();
 
-                    if (uri!=null&&repairfragment != null) {
+                    if (uri != null && repairfragment != null) {
                         ((RepairFragment) repairfragment).upload_photo(uri);
                     }
 
@@ -353,7 +353,7 @@ public class DormitoryActivity extends FragmentActivity implements View.OnClickL
             }
         }
         try {
-            mWM.addView(viewToast, params);
+//            mWM.addView(viewToast, params);
         } catch (Exception e) {
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
             startActivity(intent);
@@ -366,7 +366,11 @@ public class DormitoryActivity extends FragmentActivity implements View.OnClickL
 
     public void onDestroy() {
         if (mWM != null && viewToast != null) {
-            mWM.removeView(viewToast);
+            try {
+               // mWM.removeView(viewToast);
+            } catch (Exception e) {
+
+            }
         }
         super.onDestroy();
     }

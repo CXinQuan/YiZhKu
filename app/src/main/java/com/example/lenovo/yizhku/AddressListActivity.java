@@ -460,9 +460,10 @@ public class AddressListActivity extends BaseActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //必须先删除 数据库的 数据，再删除集合的，否则会出现  IndexOutOfBoundsException:
+                manager.deleteUserAddressInfo(list.get(position).getId());
                 list.remove(position);
                 adapter.notifyDataSetChanged();
-                manager.deleteUserAddressInfo(list.get(position).getId());
                 popupWindow.dismiss();
                 popupWindow_dx = 0;
             }

@@ -561,9 +561,11 @@ public class WaterActivity extends BaseActivity {
                         OrderGood orderGood = new OrderGood();
                         orderGood.setName(good.getName());
                         orderGood.setCount(0);
+
                         orderGood.setPrice(good.getPrice());
                         orderGood.setBitmap(good.getBitmap());
                         orderGood.setCapacity(good.getCapacity());
+                        orderGood.setBitmapurl(good.getBitmap().getUrl());
                         orderGoodList.add(orderGood);
                     }
 
@@ -978,7 +980,6 @@ public class WaterActivity extends BaseActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         shoppingCar_width = mBtnClear.getWidth();
-
         Log.d("000###########", "购物车的宽度: width = " + shoppingCar_width );
     }
 

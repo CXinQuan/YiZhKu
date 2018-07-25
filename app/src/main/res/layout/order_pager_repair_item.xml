@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/fan" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/iv_photo"
+        android:text="2018-07-23 23:19"
+        android:textColor="#88666666" />
+
+    <TextView
+        android:id="@+id/tv_repair_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_time"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/iv_photo"
+        android:singleLine="true"
+        android:text="报修类型：风扇 "
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_door_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_repair_type"
+        android:layout_toRightOf="@+id/iv_photo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:text="预约上门时段：12:00"/>
+
+</RelativeLayout>

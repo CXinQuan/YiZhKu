@@ -64,6 +64,7 @@ public class MyDataBaseHelper extends SQLiteOpenHelper {
             "repairType varchar(20)," +
             "address text," +
             "describe text," +
+            "sub_time text,"+
             "service_time varchar(20)," +
             "state integer," +
             "photo text )";

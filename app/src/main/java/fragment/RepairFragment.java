@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -33,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.yizhku.R;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
 
 import org.xutils.x;
 
@@ -46,6 +48,9 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import database.manager.RepairManager;
 import global.Constants;
+import interface_package.MyOrderObserverManager;
+import interface_package.MyRepairOrderObserver;
+import utils.TimeUtils;
 import utils.ToastUtil;
 import utils.UIUtils;
 import utils.UriToPathGetter;
@@ -59,6 +64,7 @@ import static android.Manifest.*;
 public class RepairFragment extends BaseFragment implements NumberPicker.OnValueChangeListener { //implements NumberPicker.Formatter
 
     RepairBean repair = new RepairBean();//是继承了BmobObject的一个类
+    MyOrderObserverManager  myOrderObserverManager;
 
     ImageView iv_repair_photo;
     ImageView ivBack;
@@ -70,6 +76,8 @@ public class RepairFragment extends BaseFragment implements NumberPicker.OnValue
     NumberPicker npMinute;
     EditText etDescribe;
     Button btnSubmitRepair;
+
+
     String[] hours = new String[24];
     String[] minute = new String[60];
 
@@ -158,8 +166,8 @@ public class RepairFragment extends BaseFragment implements NumberPicker.OnValue
                                     }
                                 }).show();
                     } else {
-                       // ActivityCompat.requestPermissions(getActivity(), PERMISSIONS_STORAGE, Integer.parseInt(permission.WRITE_EXTERNAL_STORAGE));
-                   ToastUtil.showToast(getActivity(),"应用需要存储权限来让您选择手机中的相片！");
+                        // ActivityCompat.requestPermissions(getActivity(), PERMISSIONS_STORAGE, Integer.parseInt(permission.WRITE_EXTERNAL_STORAGE));
+                        ToastUtil.showToast(getActivity(), "应用需要存储权限来让您选择手机中的相片！");
                     }
                 } else {
                     Intent intent = new Intent();
@@ -192,21 +200,30 @@ public class RepairFragment extends BaseFragment implements NumberPicker.OnValue
                     ToastUtil.showToast(getActivity(), "请对此次维修进行描述！");
                     return;
                 }
+
                 repair.setAddress(etDormitoryAddress.getText().toString().trim());
                 repair.setDescribe(etDescribe.getText().toString().trim());
                 repair.setPhone(etPhone.getText().toString().trim());
                 repair.setName(etPerson.getText().toString().trim());
                 repair.setService_time(hour_select + ":" + minute_select);
                 repair.setState(Constants.SUBMISSION);
+                repair.setSub_time(TimeUtils.geDateTime(System.currentTimeMillis()));
 
                 repair.save(new SaveListener<String>() {
                     public void done(String s, BmobException e) {
                         if (e == null) {
                             Log.d("bmob", "repairBean 保存成功");
                             Toast.makeText(getActivity(), "提交成功，受理编号为：" + repair.getObjectId(), Toast.LENGTH_SHORT).show();
-                            getActivity().finish();
+
                             //#############################  存入数据库
+                            //  repair.setSub_time(repair.getCreatedAt());
                             manager.saveRepairInfo(repair);
+
+                            myOrderObserverManager.notifyAllRepairObserver(repair);
+
+                            getActivity().finish();
+
+
 
                         } else {
                             Log.d("bmob", "repairBean 保存失败：" + e.getMessage() + "," + e.getErrorCode());
@@ -284,6 +301,11 @@ public class RepairFragment extends BaseFragment implements NumberPicker.OnValue
         }
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        myOrderObserverManager= MyOrderObserverManager.getInstance();
+        super.onCreate(savedInstanceState);
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.fragment_repair, null);
@@ -404,6 +426,7 @@ public class RepairFragment extends BaseFragment implements NumberPicker.OnValue
                 break;
         }
     }
+
 
 //    @Override
 //    public String format(int value) {

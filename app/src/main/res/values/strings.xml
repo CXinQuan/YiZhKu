@@ -6,6 +6,7 @@
     <string name="yjfk_bellow">您在使用过程中有什么问题，都可以反馈给我们，
         我们会尽快为您处理，另外，如果您对易仲恺有任何意见和建议都可以在这里进行留言哦！</string>
     <string name="yjfk_hint">请将您的宝贵意见写在这里~</string>
+    <string name="title_activity_repair_history_detail">RepairHistoryDetailActivity</string>
 
 
 </resources>

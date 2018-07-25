@@ -57,7 +57,11 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".OrderHistoryDetailActivity"></activity>
+        <activity android:name=".OrderHistoryDetailActivity" />
+        <activity
+            android:name=".RepairHistoryDetailActivity"
+            android:label="@string/title_activity_repair_history_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

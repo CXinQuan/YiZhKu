@@ -32,7 +32,7 @@ public class RepairManager {
     public static final String STATE = "state";
     public static final String PHOTO = "photo";
     public static final String REPAIRORDERINFO = "RepairOrderInfo";
-
+    public static final String SUB_TIME="sub_time";
 
 
     private static RepairManager manager;
@@ -75,24 +75,36 @@ public class RepairManager {
             values.put(SERVICE_TIME, repairBean.getService_time());
             values.put(STATE, repairBean.getState());
             values.put(PHOTO, repairBean.getPhoto().getUrl());
+            values.put(SUB_TIME,repairBean.getSub_time());
+
             db.insert(REPAIRORDERINFO, null, values);
 
         }
     }
 
+    /**
+     * 更新 桶装水订单状态  是否 已 完成
+     *
+     * @param id
+     */
+    public void upOrderState(String id, int state) {
+        ContentValues values = new ContentValues();
+        values.put(STATE, state);
+        db.update(REPAIRORDERINFO, values, ID + "=?", new String[]{id});
+    }
 
     /**
-     *   查询  所有 维修 订单
+     * 查询  所有 维修 订单
      */
-    public List<RepairBean> queryRepairList(int start,int count) {
+    public List<RepairBean> queryRepairList(int start, int count) {
         List<RepairBean> list = new ArrayList<RepairBean>();
         db = helper.getReadableDatabase();
-      //  Cursor cursor = db.query(REPAIRORDERINFO, null, null, null, null, null, "20");
+        //  Cursor cursor = db.query(REPAIRORDERINFO, null, null, null, null, null, "20");
 
-        Cursor cursor = db.rawQuery("select * from RepairOrderInfo limit ?,?",new String[]{start+"",count+"" }) ;//限制返回 从start开始，返回count条数据
+        Cursor cursor = db.rawQuery("select * from RepairOrderInfo limit ?,?", new String[]{start + "", count + ""});//限制返回 从start开始，返回count条数据
 
 
-        Log.d("游标长度："+  cursor.getColumnCount(),"游标长度"+  cursor.getColumnCount());
+        Log.d("游标长度：" + cursor.getColumnCount(), "游标长度" + cursor.getColumnCount());
         if (cursor.moveToFirst()) {
             do {
                 RepairBean repairBean = new RepairBean();
@@ -105,6 +117,7 @@ public class RepairManager {
                 repairBean.setService_time(cursor.getString(cursor.getColumnIndex(SERVICE_TIME)));
                 repairBean.setState(cursor.getInt(cursor.getColumnIndex(STATE)));
                 repairBean.setPhotoUrl(cursor.getString(cursor.getColumnIndex(PHOTO)));
+                repairBean.setSub_time(cursor.getString(cursor.getColumnIndex(SUB_TIME)));
                 list.add(repairBean);
             } while (cursor.moveToNext());
             if (cursor != null) {
@@ -115,7 +128,16 @@ public class RepairManager {
         return list;
     }
 
-    public static void closeDB(){
+    /**
+     *  删除一项
+     */
+    public void deleteRepairBean(String objectId){
+        db = helper.getWritableDatabase();
+        db.delete(REPAIRORDERINFO, ID + "=?", new String[]{objectId});
+        db.close();
+    }
+
+    public static void closeDB() {
         db.close();
     }
 

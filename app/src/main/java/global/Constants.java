@@ -72,5 +72,7 @@ public class Constants {
     public static final int ADMISSIBLE = 1;
     public static final int COMPLETED = 2;
 
+    public static final String REPAIR_INFO="repair_info";
+
 
 }

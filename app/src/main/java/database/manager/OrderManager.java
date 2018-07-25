@@ -108,6 +108,16 @@ public class OrderManager {
         }
     }
 
+    /**
+     * 更新 桶装水订单状态  是否 已 完成
+     *
+     * @param id
+     */
+    public void upOrderState(String id) {
+        ContentValues values = new ContentValues();
+        values.put(ISFINISH, 1);
+        db.update(TABLENAME_ORDER, values, ID + "=?", new String[]{id});
+    }
 
     /**
      * 根据订单号查询  订单  商品 信息
@@ -138,7 +148,6 @@ public class OrderManager {
         return list;
     }
 
-
     /**
      * 查询所有  订单
      * 根据订单号  拿到  该 订单的  所有 商品信息
@@ -160,7 +169,7 @@ public class OrderManager {
                 order.setTime(cursor.getString(cursor.getColumnIndex(ORDER_TIME)));
                 order.setIsfinish(cursor.getInt(cursor.getColumnIndex(ISFINISH)) == Constants.FINISH ? true : false);
                 order.setList_order_good(queryOrderGood(cursor.getString(cursor.getColumnIndex(ID))));
-                int i= order.getList_order_good().size();
+                int i = order.getList_order_good().size();
                 list.add(order);
             } while (cursor.moveToNext());
             if (cursor != null) {
@@ -172,6 +181,12 @@ public class OrderManager {
     }
 
     public static void close() {
+        db.close();
+    }
+
+    public void deleteOrderInfo(String objectId) {
+        db = helper.getWritableDatabase();
+        db.delete(TABLENAME_ORDER, ID + "=?", new String[]{objectId});
         db.close();
     }
 
