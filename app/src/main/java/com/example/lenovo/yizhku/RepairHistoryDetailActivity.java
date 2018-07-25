@@ -25,6 +25,8 @@ import database.manager.RepairManager;
 import global.Constants;
 
 public class RepairHistoryDetailActivity extends BaseActivity {
+    @BindView(R.id.iv_back)
+    ImageView iv_back;
     @BindView(R.id.tv_repair_state)
     TextView tv_repair_state;
     @BindView(R.id.tv_repair_type)
@@ -41,6 +43,8 @@ public class RepairHistoryDetailActivity extends BaseActivity {
     TextView tvDescribe;
     @BindView(R.id.iv_repair_photo)
     ImageView ivRepairPhoto;
+    @BindView(R.id.tv_repair_id)
+    TextView tv_repair_id;
 
     RepairManager dbManager;
 
@@ -67,12 +71,21 @@ public class RepairHistoryDetailActivity extends BaseActivity {
         } else if (repairBean.getState() == Constants.COMPLETED) {
             tv_repair_state.setText("已完成");
         }
+        tv_repair_id.setText(repairBean.getObjectId());
         tvRepairType.setText(repairBean.getRepairType());
         tvRepairAddress.setText(repairBean.getAddress());
         tvRepairPerson.setText(repairBean.getName());
         tvRepairPhone.setText(repairBean.getPhone());
         tvRepairTime.setText(repairBean.getService_time());
         tvDescribe.setText(repairBean.getDescribe());
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
         x.image().bind(ivRepairPhoto, repairBean.getPhotoUrl());
     }
 

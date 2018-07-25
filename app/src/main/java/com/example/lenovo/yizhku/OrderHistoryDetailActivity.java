@@ -66,7 +66,8 @@ public class OrderHistoryDetailActivity extends BaseActivity {
     ScrollView scrollView;
     @BindView(R.id.tv_order_state)
     TextView tv_order_state;
-
+    @BindView(R.id.tv_order_id)
+    TextView tv_order_id;
     float totalMoney;
     List<OrderGood> list_order_good;
     Order order;
@@ -104,14 +105,14 @@ public class OrderHistoryDetailActivity extends BaseActivity {
                             }
 
                         } else {
-                           //  Log.d("" + e.getMessage(), "失败");
+                            //  Log.d("" + e.getMessage(), "失败");
                         }
                     }
                 });
 
 
             }
-
+            tv_order_id.setText("订单编号："+order.getObjectId());
 
             list_order_good = order.getList_order_good();
             for (OrderGood orderGood : list_order_good) {

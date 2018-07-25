@@ -42,11 +42,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         android:gravity="center"
-                        android:paddingTop="20dp"
                         android:text="桶装水历史订单"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
-
+                <!--    android:paddingTop="20dp"-->
                 </android.support.v7.widget.Toolbar>
 
             </android.support.design.widget.CollapsingToolbarLayout>

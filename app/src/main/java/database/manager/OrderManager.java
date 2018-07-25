@@ -4,12 +4,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import bean.Order;
 import bean.OrderGood;
+import bean.RepairBean;
 import bean.UserAddressInfo;
 import cn.bmob.v3.datatype.BmobFile;
 import database.helper.MyDataBaseHelper;
@@ -149,6 +151,38 @@ public class OrderManager {
     }
 
     /**
+     * 查询  所有 维修 订单
+     */
+    public List<Order> querySomeOrder(int start, int count) {
+        List<Order> list = new ArrayList<Order>();
+        db = helper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from OrderInfo limit ?,?", new String[]{start + "", count + ""});//限制返回 从start开始，返回count条数据
+        // Log.d("游标长度：" + cursor.getColumnCount(), "游标长度" + cursor.getColumnCount());
+        if (cursor.moveToFirst()) {
+            do {
+                Order order = new Order();
+                order.setObjectId(cursor.getString(cursor.getColumnIndex(ID)));
+                order.setName(cursor.getString(cursor.getColumnIndex(NAME)));
+                order.setPhone(cursor.getString(cursor.getColumnIndex(PHONE)));
+                order.setSex(cursor.getInt(cursor.getColumnIndex(SEX)));
+                order.setDormitory(cursor.getString(cursor.getColumnIndex(DORMITORY)));
+                order.setFloor(cursor.getInt(cursor.getColumnIndex(FLOOR)));
+                order.setDorm_number(cursor.getString(cursor.getColumnIndex(DORM_NUMBER)));
+                order.setTime(cursor.getString(cursor.getColumnIndex(ORDER_TIME)));
+                order.setIsfinish(cursor.getInt(cursor.getColumnIndex(ISFINISH)) == Constants.FINISH ? true : false);
+                order.setList_order_good(queryOrderGood(cursor.getString(cursor.getColumnIndex(ID))));
+                int i = order.getList_order_good().size();
+                list.add(order);
+            } while (cursor.moveToNext());
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return list;
+    }
+
+
+    /**
      * 查询所有  订单
      * 根据订单号  拿到  该 订单的  所有 商品信息
      */
@@ -184,6 +218,11 @@ public class OrderManager {
         db.close();
     }
 
+    /**
+     * 删除一条信息
+     *
+     * @param objectId
+     */
     public void deleteOrderInfo(String objectId) {
         db = helper.getWritableDatabase();
         db.delete(TABLENAME_ORDER, ID + "=?", new String[]{objectId});

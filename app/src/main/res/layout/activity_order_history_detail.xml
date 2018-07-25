@@ -156,6 +156,10 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_order_id"
+                style="@style/OrderInfoTheme_TextView"
+                android:text="订单编号：0000000" />
+            <TextView
                 android:id="@+id/tv_order_state"
                 style="@style/OrderInfoTheme_TextView"
                 android:text="订单状态：未送达" />

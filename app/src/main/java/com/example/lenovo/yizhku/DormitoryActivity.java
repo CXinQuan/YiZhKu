@@ -95,10 +95,8 @@ public class DormitoryActivity extends FragmentActivity implements View.OnClickL
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-
                 case 10:
                     if (Build.VERSION.SDK_INT >= 23) {
                         if (!Settings.canDrawOverlays(this)) {
@@ -109,13 +107,10 @@ public class DormitoryActivity extends FragmentActivity implements View.OnClickL
                     break;
 
                 case Constants.REQUEST_PHOTO:
-
                     Uri uri = data.getData();
-
                     if (uri != null && repairfragment != null) {
                         ((RepairFragment) repairfragment).upload_photo(uri);
                     }
-
                     break;
 
             }
@@ -353,7 +348,9 @@ public class DormitoryActivity extends FragmentActivity implements View.OnClickL
             }
         }
         try {
-//            mWM.addView(viewToast, params);
+            if (!viewToast.isShown()) {
+                mWM.addView(viewToast, params);
+            }
         } catch (Exception e) {
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
             startActivity(intent);
@@ -361,18 +358,22 @@ public class DormitoryActivity extends FragmentActivity implements View.OnClickL
     }
 
     public void addBall() {
-        mWM.addView(viewToast, mParams);
+        if (!viewToast.isShown()) {
+            mWM.addView(viewToast, mParams);
+        }
     }
 
     public void onDestroy() {
-        if (mWM != null && viewToast != null) {
+        super.onDestroy();
+        if (mWM != null && viewToast.getParent()!=null&&viewToast.isShown()) {
             try {
-               // mWM.removeView(viewToast);
+                mWM.removeView(viewToast);
+                viewToast = null;
+                mWM=null;
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         }
-        super.onDestroy();
     }
 
 

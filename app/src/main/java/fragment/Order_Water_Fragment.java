@@ -82,6 +82,7 @@ public class Order_Water_Fragment extends BaseFragment implements MyWaterOrderOb
         RecyclerView rv_order_water = view.findViewById(R.id.rv_order_water);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         refreshLayout = (RefreshLayout) view.findViewById(R.id.refreshLayout);
+        initRefreshLayout(refreshLayout);
         rv_order_water.setLayoutManager(layoutManager);
 
         //设置 RecyclerView 的间距
@@ -94,6 +95,7 @@ public class Order_Water_Fragment extends BaseFragment implements MyWaterOrderOb
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         dbManager = OrderManager.getInstance(getActivity());
         water_order_list = new ArrayList<Order>();
         myOrderObserverManager = MyOrderObserverManager.getInstance();

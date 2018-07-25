@@ -13,13 +13,23 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#663f67f4">
+
 
             <ImageView
                 android:id="@+id/iv_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_margin="10dp"
+                android:src="@mipmap/go_back" />
+
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@+id/iv_back"
                 android:src="@mipmap/repair_title_person" />
 
             <TextView
@@ -27,10 +37,32 @@
                 android:layout_height="wrap_content"
                 android:text="设备维修"
                 android:textSize="20sp"
-                android:layout_toRightOf="@+id/iv_back"
+                android:layout_toRightOf="@+id/iv_head"
                 android:layout_centerVertical="true"
                 android:textColor="#3f67f4"/>
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/number"
+                android:text="受理编号："
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/tv_repair_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#3f67f4"
+                android:textSize="18sp"
+                android:text="0000000"
+                />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +107,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
